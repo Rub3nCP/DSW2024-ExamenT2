@@ -11,7 +11,7 @@ $bill = [
   ['Grey Goose Vodka', 55.00, 1],
   ['Baileys Irish Cream', 25.00, 3],
   ['Estrella de Galicia', .7, 24],
-  ];
+];
 
 $total = 0;
 
@@ -28,7 +28,7 @@ foreach ($bill as $item) {
   $price = number_format($item[1], 2) . "€";
   $quantity = sprintf('%02d', $item[2]);
   $cost = $item[1] * $item[2];
-  $formattedCost = str_pad(number_format($cost, 2), 10, ".", STR_PAD_LEFT);
+  $formattedCost = number_format($cost, 2) . "€";
 
   echo "<tr>
           <td>$name</td>
@@ -40,10 +40,11 @@ foreach ($bill as $item) {
   $total += $cost;
 }
 
-$formattedCost = str_pad(number_format($cost, 2), 10, ".", STR_PAD_LEFT);
+// Formatea el total correctamente
+$formattedTotal = number_format($total, 2) . "€";
 echo "<tr>
         <td colspan='3'><strong>Total</strong></td>
-        <td>$formattedCost</td>
+        <td><strong>$formattedTotal</strong></td>
       </tr>";
 echo "</table>";
 ?>
